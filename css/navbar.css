@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  width: 87px;
+  margin-right: auto;
+  padding-left: 25px;
+}
+
+#carrito {
+  position: relative;
+  top: 10px;
+  width: 45px;
+  align-items: center;
+  display: flex;
+}
+
+ul, li, a, button {
+  font-family: roboto, "sans-serif";
+  font-weight: 500;
+  font-size: 23px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#boton{
+  background:  #f6a015;
+  padding: 9px 10px;
+  background-color: rgba(246,160,28,.3);
+  border: none;
+  border-radius: 10px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer; 
+}
+#boton:active{
+  background: rgba(246,160,28,1);
+ color: black;
+}
+
+header {
+  display: flex;
+  background: #704b1c;
+  width: 100%;
+  clear: both;
+  content: "";
+  align-items: center;
+  padding: 2px ;
+  padding: 0 20px;
+  justify-content: end;
+}
+
+
+.nav-links {
+  width: 100%;
+  margin: center;
+  list-style: none;
+  padding-bottom: 10px;
+}
+
+.nav-links li {
+  display: inline-block;
+  padding: 0 10px;
+
+}
+
+.nav-links li a {
+  transition: all 0.3s ease 0s;
+}
+
+.nav-links li a:hover {
+  color: #f6a015;
+}
+
+
