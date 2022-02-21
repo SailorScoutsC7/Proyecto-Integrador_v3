@@ -173,7 +173,7 @@ for (let index = 0; index < recorrerArray.length; index++) {
         correcto = false;
         alert("Nombre no valido");
     }
-
+//Verifica que el dato ingresado sea un entero
     if(isNaN(precio)){
         correcto=false;
         alert("El precio debe ser un numero");
