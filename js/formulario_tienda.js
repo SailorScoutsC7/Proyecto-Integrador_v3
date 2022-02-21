@@ -151,3 +151,56 @@ for (let index = 0; index < recorrerArray.length; index++) {
             
         });
     });//document
+
+    //Validacion de formulario Tienda
+    function validarCreacion(ID,nombre,precio,cantidad,descripcion,img){
+
+        var ID = document.getElementById('ID_Producto').value;
+        var nombre = document.getElementById('nombre_producto').value;
+        var precio = document.getElementById('Precio').value;
+        var cantidad = document.getElementById('cantidad').value;
+        var descripcion = document.getElementById('Descripcion').value;
+        var img = document.getElementById('imagen').value;
+    var correcto=true;
+    if(isNaN(ID)){
+        correcto=false;
+        alert("El id debe ser un numero entero");
+    }
+//Expresion que valida un nombre con espacios
+     var expresioName= /^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú]+)*$/;
+
+    if(!expresioName.test(nombre)){
+        correcto = false;
+        alert("Nombre no valido");
+    }
+
+    if(isNaN(precio)){
+        correcto=false;
+        alert("El precio debe ser un numero");
+    }
+
+
+    if(isNaN(cantidad)){
+        correcto=false;
+        alert ("Debe ingresar la cantidad en numeros");
+    }
+
+    var expresionImg =/\.(jpg|png|gif)$/;
+    if (!expresionImg.test(img)) {
+        correcto=false;
+        alert('El archivo a adjuntar no es una imagen');
+    }
+
+    if(descripcion == ""){
+            correcto = false;
+            alert("Es necesaria una descripcion del producto");
+    }
+
+    if(!correcto){
+        alert("campos invalidos: No se crea Producto");
+    }else{
+        alert("Producto Creado");
+       agregarProducto();
+    }
+
+}
