@@ -1,5 +1,4 @@
  console.log("Sistema funcionando");
-
  //Montar el servidor (Solo usar una vez)
 
 //   var regular=[];
@@ -71,12 +70,13 @@ function añadirProducto(subir_producto){
         '<img src="../html/assets/Store/'+subir_producto.tipo+'/'+subir_producto.img+'" class="card-img-top" alt="'+subir_producto.nombre+'">\n'                        +
         '    <div class="card-body">\n'                                     +
         '        <h5 class="card-title">'+subir_producto.nombre+'</h5>\n'   +
-        '        <h6 style="color: brown; font-sixe: 50px">'+subir_producto.precio+' MXN</h6>\n'   +
+        '        <h6 style="color: brown; font-sixe: 50px" id="precio">'+subir_producto.precio+' MXN</h6>\n'   +
         '        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#' + primerletra + subir_producto.ID + '" onclick="agregarModal()">Agregar</button>\n' +
         '    </div>\n'                                                      +
         '</div>\n'                                                          +
         '</div>\n'                                                          +    
          //Modal
+
          '<div class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="' + primerletra + subir_producto.ID + '">\n' +
          '<div class="modal-dialog modal modal-dialog-centered" role="document">\n' +
          '<div class="modal-content">\n' +
@@ -90,7 +90,7 @@ function añadirProducto(subir_producto){
          '<div class="container-fluid">\n' +
          '<div class="row">\n' +
          '<div class="col-md-4"><img src="../html/assets/Store/' + subir_producto.tipo + '/' + subir_producto.img + '" class="img-fluid"></div>\n' +
-         '<div class="col-md-8" ><p style="text-align: justify;">'+subir_producto.descripcion+'</p><p style="text-align: justify;">Precio:' + subir_producto.precio + ' pesos.</p><div class="btn-mas"><span>-</span><span class="numero" id="value">1</span><span>+</span></div></div>\n' +
+         '<div class="col-md-8" ><p style="text-align: justify;">'+subir_producto.descripcion+'</p><p style="text-align: justify;">Precio: </p>' +'<a id="cambioPrecio" style="font-size=15px" >' + subir_producto.precio + '</a>' +' <a>pesos.</a><div class="btn-mas"><span>-</span><span class="numero" id="value">1</span><span>+</span></div></div>\n' +
          '</div>\n' +
          '</div>\n' +
          '</div>\n' +
@@ -136,18 +136,29 @@ for (let index = 0; index < recorrerArray.length; index++) {
     }
     //contador del modal 
     document.querySelectorAll(".btn-mas>span:first-child, .btn-mas>span:last-child").forEach(span => {
-        span.addEventListener("click", function(el) {
-            const element=this.parentElement.querySelector(".numero");
-            let num=element.innerText;
+        span.addEventListener("click",
+        function () {
+            var element=this.parentElement.querySelector(".numero");
+            var num=element.innerText;
+            var prueba = subir_producto.precio*(parseInt(num)+1);
             if (this.innerText=="+") {
                 // incrementamos
-                num++;
+                num ++;
+                           
             } else {
-                // decrementanos
-                num --;
+                // decrementano
                 
+                num--;
             }
-            element.innerText=num;
-            
+            element.innerText=num;  
+            document.getElementById("cambioPrecio").innerText =  prueba.toString();
         });
     });//document
+
+    /*
+    function CambioDePrecio(){
+        
+    document.getElementById("cambioPrecio").innerText =  prueba.toString();
+    }
+
+CambioDePrecio();*/
