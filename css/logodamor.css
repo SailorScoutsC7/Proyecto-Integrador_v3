@@ -13,9 +13,10 @@
     body {
       font-family: "Roboto", sans-serif;
       margin: 0;
-      background: url(../html/assets/Store/fondos/FONDO_DAMOR.jpg);
+      background: url(../html/assets/Store/fondos/fondo3.png); */
+      /* background-color: rgba(246,160,28,1); */
       background-size: cover;
       background-attachment: fixed;
-  
+      background-repeat: repeat;
   }
     
