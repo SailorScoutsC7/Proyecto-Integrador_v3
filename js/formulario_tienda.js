@@ -90,7 +90,7 @@ function añadirProducto(subir_producto){
          '<div class="container-fluid">\n' +
          '<div class="row">\n' +
          '<div class="col-md-4"><img src="../html/assets/Store/' + subir_producto.tipo + '/' + subir_producto.img + '" class="img-fluid"></div>\n' +
-         '<div class="col-md-8" ><p style="text-align: justify;">'+subir_producto.descripcion+'</p><p style="text-align: justify;">Precio:' + subir_producto.precio + ' pesos.</p><span id="--">-</span><span class="numero" id="value">1</span><span id="++">+</span></div>\n' +
+         '<div class="col-md-8" ><p style="text-align: justify;">'+subir_producto.descripcion+'</p><p style="text-align: justify;">Precio:' + subir_producto.precio + ' pesos.</p><div class="btn-mas"><span>-</span><span class="numero" id="value">1</span><span>+</span></div></div>\n' +
          '</div>\n' +
          '</div>\n' +
          '</div>\n' +
@@ -134,3 +134,20 @@ for (let index = 0; index < recorrerArray.length; index++) {
         var añadir_productoTemp = temporada[t];
         añadirProductosTempo(añadir_productoTemp);
     }
+    //contador del modal 
+    document.querySelectorAll(".btn-mas>span:first-child, .btn-mas>span:last-child").forEach(span => {
+        span.addEventListener("click", function(el) {
+            const element=this.parentElement.querySelector(".numero");
+            let num=element.innerText;
+            if (this.innerText=="+") {
+                // incrementamos
+                num++;
+            } else {
+                // decrementanos
+                num --;
+                
+            }
+            element.innerText=num;
+            
+        });
+    });//document
