@@ -1,6 +1,6 @@
-#logodamor{
+/* #logodamor{
        position: relative;
-      top: 20px; /* adjust the values ​​to move the image */
+      top: 20px; /* adjust the values ​​to move the image 
       left: 3px;
       width: 1px;
       height: 15px;
@@ -8,7 +8,7 @@
       display: block;
       position:  fixed;
       z-index: 3;
-    }
+    } */
   
     body {
       font-family: "Roboto", sans-serif;

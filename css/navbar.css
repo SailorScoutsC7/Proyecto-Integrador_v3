@@ -2,6 +2,21 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
+}
+
+
+
+#logodamor{
+  position: relative;
+ top: -20px; /* adjust the values ​​to move the image */
+ left: 1px;
+ width: 110px;
+ height: 110px;
+ margin: 1%;
+ display: block;
+ position:  fixed;
+ z-index: 3;
 }
 
 .logo {
@@ -50,6 +65,8 @@ header {
   padding: 2px ;
   padding: 0 20px;
   justify-content: end;
+  position:  fixed;
+  z-index: 3;
 }
 
 
@@ -58,13 +75,15 @@ header {
   margin: center;
   list-style: none;
   padding-bottom: 10px;
+  
+  
 }
 
 .nav-links li {
   display: inline-block;
   padding: 0 10px;
-
-}
+ 
+  }
 
 .nav-links li a {
   transition: all 0.3s ease 0s;
@@ -73,5 +92,4 @@ header {
 .nav-links li a:hover {
   color: #f6a015;
 }
-
 

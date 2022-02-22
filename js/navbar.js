@@ -2,6 +2,7 @@
     '<header>\n' +
     '<nav>\n' +
         '<ul class="nav-links">\n' +
+            '<li><img  src="../html/assets/DAMOR_sencillo.png" id="logodamor" width="110" height="110"></img></li>\n' +
             '<li><a href="Conocenos.html">Conócenos</a></li>\n' +
             '<li><a href="Desarrolladores.html">Desarrolladores</a></li>\n' +
             '<li><a href="https://www.animalgourmet.com/2018/02/26/damor-panaderia-guadalajara/">Noticias</a></li>\n' +
