@@ -1,95 +1,130 @@
-* {
+*{
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  
 }
 
-
-
-#logodamor{
-  position: relative;
- top: -20px; /* adjust the values ​​to move the image */
- left: 1px;
- width: 110px;
- height: 110px;
- margin: 1%;
- display: block;
- position:  fixed;
- z-index: 3;
+nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 8vh;
+  background-color: #704b1c;
 }
 
-.logo {
-  width: 87px;
-  margin-right: auto;
-  padding-left: 25px;
+.logo{
+  color: #d8d9D6;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 30px;
+}
+
+.nav-links{
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+
+}
+
+.nav-links li{
+  list-style: none;
+  font-size: 14px;
+  color: #d8d9D6;
+  cursor: pointer;
+  margin-top: 17px;
+}
+
+.nav-links a{
+  color: #d8d9D6;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.burger{
+  display: none;
+  cursor: pointer;
+}
+
+.burger div{
+  width: 25px;
+  height: 3px;
+  background-color: #d8d9D6;
+  margin: 5px;
+  transition: all 0.3s ease;
 }
 
 #carrito {
-  position: relative;
-  top: 10px;
-  width: 45px;
+  height: 30px;
   align-items: center;
-  display: flex;
+  margin-top: -8px;
 }
 
-ul, li, a, button {
-  font-family: roboto, "sans-serif";
-  font-weight: 500;
-  font-size: 23px;
-  color: #ffffff;
-  text-decoration: none;
-}
-
-#boton{
-  background:  #f6a015;
-  padding: 9px 10px;
-  background-color: rgba(246,160,28,.3);
-  border: none;
-  border-radius: 10px;
-  transition: all 0.3s ease 0s;
-  cursor: pointer; 
-}
-#boton:active{
-  background: rgba(246,160,28,1);
- color: black;
-}
-
-header {
-  display: flex;
-  background: #704b1c;
-  width: 100%;
-  clear: both;
-  content: "";
-  align-items: center;
-  padding: 2px ;
-  padding: 0 20px;
-  justify-content: end;
-  position:  fixed;
-  z-index: 3;
-}
-
-
-.nav-links {
-  width: 100%;
-  margin: center;
-  list-style: none;
-  padding-bottom: 10px;
-  
+@media screen and (max-width:1324px){
+  .nav-links{
+      display: flex;
+      justify-content: space-around;
+      width: 80%;
+  }
   
 }
 
-.nav-links li {
-  display: inline-block;
-  padding: 0 10px;
- 
+
+@media screen and (max-width:768px){
+  body{
+      overflow-x: hidden;
   }
 
-.nav-links li a {
-  transition: all 0.3s ease 0s;
+  .nav-links{
+      position: absolute;
+      right: 0px;
+      height: 92vh;
+      top: 8vh;
+      background-color: #704b1c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+      transform: translatex(100%);
+      transition: transform 0.5s ease-in;
+  }
+
+
+
+  .nav-links li{
+      opacity: 0;
+  }
+
+  .burger{
+      display: block;
+  }
+  
 }
 
-.nav-links li a:hover {
-  color: #f6a015;
+.nav-active{
+  transform: translate(0%);
 }
 
+@keyframes navlinkfade{
+  from{
+      opacity: 0;
+      transform: translateX(50px);
+  }
+
+  to{
+      opacity: 1;
+      transform: translateX(0px);
+
+  }
+}
+
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-6px,6px);
+}
+.toggle .line2 {
+  opacity: 0;
+}
+.toggle .line3 {
+  transform: rotate(45deg) translate(-6px,-6px);
+}
