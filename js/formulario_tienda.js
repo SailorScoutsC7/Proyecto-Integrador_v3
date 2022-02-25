@@ -13,8 +13,7 @@ temporada = JSON.parse(localStorage.getItem("temporada"));
 producto_covid = JSON.parse(localStorage.getItem("producto_covid"));
 
 class Producto {
-    constructor(ID,nombre,precio,cantidad,tipo,descripcion,img) {
-        this.ID= ID;
+    constructor(precio,cantidad,tipo,descripcion,img) {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad= cantidad;
@@ -24,7 +23,6 @@ class Producto {
     }
 }
 function agregarProducto(formulario) {
-    var ID = document.getElementById('ID_Producto').value;
     var nombre = document.getElementById('nombre_producto').value;
     var precio = document.getElementById('Precio').value;
     var cantidad = document.getElementById('cantidad').value;
@@ -33,7 +31,7 @@ function agregarProducto(formulario) {
     var img = document.getElementById('imagen').value;
     img = img.replace(/^.*\\/, "");
     //validarForm(nombre, email, telefono, mensaje);
-    var producto = new Producto(ID,nombre,precio,cantidad,tipo,descripcion,img);
+    var producto = new Producto(nombre,precio,cantidad,tipo,descripcion,img);
     console.log(tipo);
     tipoProducto(tipo,producto);
     ID="";
@@ -63,6 +61,7 @@ function tipoProducto(tipo,producto){
 }
 //función que usa los datos del LocaStorage para hacer las tarjetas del producto
 function añadirProducto(subir_producto){
+    
     var primerletra = subir_producto.tipo.charAt(0);
     const itemHTML = 
         '<div class="col-md-4">\n'                                         +
@@ -118,29 +117,16 @@ function añadirProductosTempo(añadir_productoTemp){
           <img src="assets/Store/temporada/febrero.jpg" class="d-block w-100" alt="..." height="500" width="150">
           </div>
 */
-
 //Código para añadir productos al HTML.
-var recorrerArray=[regular,temporada,producto_covid];
-
-for (let index = 0; index < recorrerArray.length; index++) {
-    for (let j = 0; j < recorrerArray[index].length; j++) {
-        var subir_producto = recorrerArray[index][j];
-       añadirProducto(subir_producto);
-    }
-};
 
 
-    for (let t = 0; t < temporada.length; t++) {
-        var añadir_productoTemp = temporada[t];
-        añadirProductosTempo(añadir_productoTemp);
-    }
     //contador del modal 
     document.querySelectorAll(".btn-mas>span:first-child, .btn-mas>span:last-child").forEach(span => {
         span.addEventListener("click",
         function () {
             var element=this.parentElement.querySelector(".numero");
-            var num=element.innerText;
-            var prueba = subir_producto.precio*(parseInt(num)+1);
+            var numero=parseInt(document.getElementById(cambioPrecio));
+            var prueba = subir_producto.precio+numero;
             if (this.innerText=="+") {
                 // incrementamos
                 num ++;
@@ -162,3 +148,14 @@ for (let index = 0; index < recorrerArray.length; index++) {
     }
 
 CambioDePrecio();*/
+
+
+fetch('http://localhost:8081/api/productos/')
+    .then(function(response){
+      response.json().then(function(productos){
+            for (let j = 0; j < productos.length; j++) {
+                var subir_producto = productos[j];
+               añadirProducto(subir_producto);
+            }
+      })
+    }); 
