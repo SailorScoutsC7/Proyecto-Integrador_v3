@@ -15,7 +15,6 @@
     background: url(../html/assets/DAMOR_c_fondo.png);
     background-size: cover;
     background-attachment: fixed;
-
 }
 
 * {
@@ -28,21 +27,18 @@
   width: 100%;
   padding: 35px;
   margin-bottom: 15px;
-
 }
 
 .formulario{
   background-color: rgba(201, 201, 201, .7);
   margin-top: 80px;
   padding: 3px;
-
 }
 
 H1{
   text-align: center;
   color: #F6A015;
   font-size: 40px;
-
 }
 
 input[type="text"],
@@ -108,7 +104,6 @@ label{
       .formulario{
           margin: auto;
           width: 500px;
-          margin-top: 80px;
           border-radius: 3%;
       }
 }
