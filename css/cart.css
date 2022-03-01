@@ -92,7 +92,7 @@ button.cart {
   background: rgb(255, 255, 255);
   border: 1px solid #000000;
   color: rgba(12, 12, 12, 0.8);
-  margin-bottom: 10rem;
+  margin-bottom: 10px;
   width: 100%;
 }
 .c-item {
