@@ -61,17 +61,17 @@ nav{
   margin-top: -8px;
 }
 
-@media screen and (max-width:1324px){
+/* @media screen and (max-width:1424px){
   .nav-links{
       display: flex;
       justify-content: space-around;
-      width: 80%;
+
   }
   
-}
+} */
 
 
-@media screen and (max-width:768px){
+@media screen and (max-width:968px){
   body{
       overflow-x: hidden;
   }
@@ -99,6 +99,12 @@ nav{
   .burger{
       display: block;
   }
+
+/*   
+  nav {
+  z-index: 1 !important;
+  } */
+
   
 }
 
