@@ -65,6 +65,18 @@ background-image: url(fondo1.jpg )
               text-shadow: rgb(0, 0, 0) 2px 2px 2px;   
           }
 
+          @media screen and (max-width:986px){
+          .carousel-item{
+            height: 250px;
+            }
+
+            #imgcar{
+              height: 50px;
+            }
+          }
+
+
+            
 
           /* .card {
             border: 5px solid ;
