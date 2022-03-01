@@ -22,7 +22,7 @@
 
             '<li><a href="../html/IniciarSesion.html"></a>Iniciar Sesion</li>\n' +
 
-            '<li><a href="../html/Conocenos.html"><img src="assets/carrito de compras.png" alt="" id="carrito"></a></li>\n' +
+            '<li><a id="myBtn" ><img src="assets/carrito de compras.png" alt="" class="carrito"></a></li>\n' +
 
         '</ul>\n' +
         '<div class="burger">\n' +
