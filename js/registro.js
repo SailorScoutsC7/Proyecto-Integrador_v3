@@ -19,9 +19,22 @@ function agregarUsuario(){
     var telefono = document.getElementById('telefono').value;
     var contraseña2 = document.getElementById('contraseña2').value;
     if (contraseña==contraseña2) {
-        var usuario=new Usuario(nombre,telefono,correo,contraseña);
-        registro_usuarios.push(usuario);//se agrega el usuario a la lista
-        localStorage.setItem("Registro_usuarios", JSON.stringify(registro_usuarios));//Guarda en local storage
+        const usuario=new Usuario(nombre,telefono,correo,contraseña);
+        fetch('http://localhost:8081/api/usuarios/', {
+             method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+             },
+  
+         body: JSON.stringify(usuario),
+        })
+        .then(response => response.json())
+        .then(usuario => {
+            console.log('Success:',usuario);
+                })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
     } else {
         alert("Contraseñas no coinciden");
     }
@@ -73,3 +86,7 @@ function validarRegistro(nombre,telefono,email,contraseña1,contraseña2){
     }
 
 }
+
+
+
+
