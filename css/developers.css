@@ -112,4 +112,30 @@ h1{
 	.carousel-caption a:hover {
 		color:white;
 		background-color:#704B1C;
-	  }
+	}
+
+    @media screen and (max-width:1202px){
+		#intro{
+			font-size: 20px;
+			font-weight: lighter;
+			margin: 2%;
+			align-items: center;
+			height: 200px;
+		}
+		h1{
+            align-items: center;
+		}
+		}
+
+		@media screen and (max-width:986px){
+			#intro{
+				font-size: 16px;
+				font-weight: lighter;
+				margin: 2%;
+				align-items: center;
+				height: 100%;
+			}
+			h1{
+				align-items: center;
+			}
+			}

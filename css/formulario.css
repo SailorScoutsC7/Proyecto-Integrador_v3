@@ -45,7 +45,7 @@ H1{
 input[type="text"],
 input[type="password"]{
   font-size: 20px;
-  width: 82%;
+  width: 100%;
   padding: 5px;
   background: rgb(255, 255, 255);;
   align-items: center;
