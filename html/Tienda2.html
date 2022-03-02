@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="img/DAMOR_sencillo.png" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/contador.css">
+    <link rel="stylesheet" href="../css/store.css">
+    <link rel="shortcut icon" href="../html/assets/DAMOR_sencillo.png">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/logodamor.css">
+    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="../css/modalcar.css">
+
+    <!-- Navbar start -->
+    <div id="navbar"></div><!--Navbar-->
+    </head>
+    <style>
+        #carouselExampleFade {
+
+            z-index: -1 !important;
+        }
+    </style>
+    <div id="navbar"></div><!--Navbar-->
+    <!--Modal cart-->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Modal Header</h2>
+      </div>
+      <div class="modal-body">
+        <div id="cart-items"></div>
+      </div>
+      <div class="modal-footer">
+        <h3>Modal Footer</h3>
+      </div>
+    </div>
+  
+  </div>
+  <body>
+
+        <div class="container-fluid">
+            <!-- Carousel start, use container -->
+            <div class="row">
+                <div class="col">
+                    <!-- first column-->
+                </div>
+                <div class="col-10">
+                    <!-- first column-->
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                        <div class="carousel-inner" id="carruselTempo">
+                            <div class="carousel-item active">
+                                <img src="assets/Store/temporada/bienvenida.jpg" class="d-block w-100" alt="">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-target="#carouselExampleFade"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-target="#carouselExampleFade"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Siguiente</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- last column  -->
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Carousel finish -->
+        <div id="backgroundcolor" class="container mx-auto mt-4">
+            <!-- Store 1 start-->
+            <h1 id="conteiner" style="text-align-last: center;"> Regulares</h1> <br><br><br><br><br>
+            
+            <!-----PRUEBA--------->
+
+            <!-- (A) CART -->
+            <div id="cart-wrap">
+                <!-- (A1) PRODUCTS LIST -->
+
+                <div id="regular" class="cart-products"></div>
+                <!-- (A2) CURRENT CART ITEMS -->
+                <!-- <div id="cart-items"></div> -->
+            </div>
+            <!-- (B) TEMPLATES -->
+            <!-- (B1) PRODUCT CELL -->
+            <!-- (B2) CART ITEMS -->
+            <template id="template-cart">
+                <div class="c-item">
+                    <div class="c-name"></div>
+                    <img class="c-img img-thumbnail" alt="Cinque Terre" width="200px" height="200px">
+                    <button class="c-del cart">X</button>
+                    <input class="c-qty" type="number" min="0" />
+                </div>
+            </template>
+            <template id="template-cart-checkout">
+                <button class="c-empty cart" onclick="cart.nuke()">Ya no quiero nada</button>
+                
+                <button class="c-checkout cart" >Confirmar compra</button>
+               
+            </template>
+
+            <template id="template-product">
+                <div class="p-item">
+                    <img class="p-img" />
+                    <div class="p-name"></div>
+                    <div class="p-desc"></div>
+                    <div class="p-price"></div>
+                    <button class="cart p-add">Agregar al carrito</button>
+                </div>
+            </template>
+
+            <!---------FIN PRUEBA--------->
+
+            <!--<div class="row" id="regular">Regular add cards-->
+        </div>
+
+
+
+</div><!-- Store 1 finish-->
+
+
+<div id="backgroundcolor2" class="container mx-auto mt-4">
+    <!-- Store 2 start-->
+    <h1 id="conteiner" style="text-align-last: center;">Temporada</h1> <br><br><br><br><br>
+    <div id="cart-wrap">
+        <!-- (A1) PRODUCTS LIST -->
+        <div id="temporada" class="cart-products"></div>
+        <!-- (A2) CURRENT CART ITEMS -->
+    </div>
+</div>
+
+</div>
+</div>
+
+
+
+</div><!-- Store 2 finish-->
+<div id="backgroundcolor3" class="container mx-auto mt-4">
+  
+    <!-- Store 3 start-->
+    <h1 id="conteiner" style="text-align-last: center;">DAMOR en casa</h1> <br><br><br><br><br>
+    <div id="cart-wrap">
+        <!-- (A1) PRODUCTS LIST -->
+        <div id="damor_en_casa" class="cart-products"></div>
+        <!-- (A2) CURRENT CART ITEMS -->
+    </div>
+
+</div><!-- Store 3 finish-->
+
+<!-- (B2) CART ITEMS -->
+
+
+<script src="../js/formulario_tienda.js"></script>
+<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="../js/products.js">
+    </script>
+    <!-- <script src="/Proyecto-Integrador_v3/carrito/cart.js"></> -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+    <!-- prueba de pull -->
+    <main>
+        <div2 id="logodamor"><img src="../html/assets/LogoFebrero.png" width="220" height="220"></div2>
+    </main>
+    <script src="../js/registro.js"></script>
+    <script src="/js/navbar.js"></script>
+    <script src="../js/navres.js"></script>
+    <script src="../js/modalcar.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AYA3OvYvTlZUKebsLibK8lk_eAC8Z023H0Qb-dTNqeAQKmJT8YlyVy7ZOdlTngnO5carQwVHJISadkA_&currency=MXN"></script>
+    <script>
+
+    </script>
+    </body>
+
+</html>

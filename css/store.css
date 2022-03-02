@@ -66,7 +66,13 @@ background-image: url(fondo1.jpg )
           }
 
 
+<<<<<<< Updated upstream
           .card {
+=======
+            
+
+          /* .card {
+>>>>>>> Stashed changes
             border: 5px solid ;
 border-radius: 40px;
 }
