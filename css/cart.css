@@ -26,10 +26,11 @@ button.cart {
   color: #fff;
   font-weight: 700;
   cursor: pointer;*/
+  
   margin-bottom: 10px;
   border: 2px solid #704b1c;
   border-radius: 40px;
-  width: 300px;
+  width: 90%;
   color: #704b1c;
   border-image-slice:3;
   background: linear-gradient(90deg, rgba(246,160,21,1) 35%, rgba(209,138,80,1) 100%);/* var(--gradient) !important;*/
@@ -134,7 +135,7 @@ button.cart {
 .c-name{
   font-size: 1.05em;
   font-weight: 700;
-  height: 30px;
+  height: auto;
   width: 100%;
   margin-left: .75em;
 }
@@ -165,6 +166,7 @@ button.cart {
   border: none;
   border-radius: .1em;
   font-weight: bold;
+  
 }
 .c-del:hover {
   background-color: #CC4C4C;

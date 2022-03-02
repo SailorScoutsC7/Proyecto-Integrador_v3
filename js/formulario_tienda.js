@@ -69,7 +69,7 @@ var cart = {
         // (D2) CART IS EMPTY
         if (empty) {
             item = document.createElement("div");
-            item.innerHTML = "Tienda vacia";
+            item.innerHTML = "Carrito vacio";
             cart.hItems.appendChild(item);
         }
 
@@ -85,10 +85,11 @@ var cart = {
                 item.querySelector(".c-del").onclick = () => { cart.remove(id); };
                 item.querySelector(".c-img").src = cart.iURL + p.tipo+ "/" + p.img;
                 item.querySelector(".c-name").textContent = p.name;
-                item.querySelector(".c-price").textContent = "Price: $" + p.price.toFixed(2);
+                item.querySelector(".c-price").textContent = "Precio: $" + p.price.toFixed(2);
                 //item.createElement("div").className = "c"
                 item.querySelector(".c-qty").value = cart.items[id];
                 item.querySelector(".c-qty").onchange = function () { cart.change(id, this.value); };
+                console.log(item);
                 cart.hItems.appendChild(item);
                 
 
