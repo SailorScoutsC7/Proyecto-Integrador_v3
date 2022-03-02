@@ -26,15 +26,18 @@ button.cart {
   color: #fff;
   font-weight: 700;
   cursor: pointer;*/
-
-  border: 5px solid;
-  border-image-slice: 1;
-  background: var(--gradient) !important;
+  margin-bottom: 10px;
+  border: 2px solid #704b1c;
+  border-radius: 40px;
+  width: 300px;
+  color: #704b1c;
+  border-image-slice:3;
+  background: linear-gradient(90deg, rgba(246,160,21,1) 35%, rgba(209,138,80,1) 100%);/* var(--gradient) !important;*/
   /* -webkit-background-clip: text !important; */
   /*-webkit-text-fill-color: transparent !important;*/
-  border-image-source: var(--gradient) !important;
+ /* border-image-source: #704b1c/* var(--gradient) !important;*/
   text-decoration: none;
-  transition: all 0.4s ease;
+  /*transition: all 0.4s ease;*/
 }
 
 /* (B) PRODUCTS LIST */
@@ -47,17 +50,18 @@ button.cart {
   /*tarjeta de  producto */
   background: rgb(209, 139, 79);
   padding: 1px; /*Margen superior imagen*/
-  border: 3px solid white;
-  border-radius: 40px;
+  border:3px solid rgb(255, 255, 255);
+  border-radius: 42px;
   text-align: center;
   margin-bottom: 2rem;
+
 }
 .p-img {
   /* max-width: 150px; */
   /* border: 1px solid; */
-  border-radius: 40px 40px 40px 40px;
-  width: 350px; /*ancho imagen*/
-  height: 280px;
+  border-radius: 40px;
+  width: 100%; /*ancho imagen*/
+  height: 60%;
 }
 .p-name,
 .p-price {
@@ -71,58 +75,123 @@ button.cart {
 .p-name {
   font-size: 1.35em;
   /* text-transform: uppercase; */
-  color: whitesmoke;
+  color: rgb(246, 160, 26);
+  text-shadow: 2px 2px 5px #704b1c;
 }
 .p-desc {
   color: rgb(125, 78, 36);
   font-size: 0.9em;
+  height: 10%;
 }
 .p-price {
-  color: #dd2476;
+  color: rgb(246, 160, 26) ; 
+  text-shadow: 2px 2px 5px #704b1c    ;
 }
 .p-add {
   width: 100%;
 }
 
-/* (C) CURRENT SHOPPING CART */
-#cart-items {
-  /* background: rgb(73, 70, 70);
-  color: ##dd2476;
-  border-radius: 5px; */
-  background: rgb(255, 255, 255);
-  border: 1px solid #000000;
-  color: rgba(12, 12, 12, 0.8);
-  margin-bottom: 10px;
-  width: 100%;
+#template-cart{
+  align-items: center;
 }
+/* (C) CURRENT SHOPPING CART */
+.cart-header {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #333;
+}
+.cart-row {
+  display: flex;
+}
+
+
+#cart-items {
+  background-color: color transparent initial inherit;
+  align-items: center;
+  color: rgba(12, 12, 12, 0.8);
+  
+  width: 100%;
+  
+}
+.cart-column {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-right: 1.5em;
+  padding-bottom: 10px;
+  margin-top: 10px;
+} 
+
+
 .c-item {
   padding: 10px 0;
   display: flex;
   flex-wrap: wrap;
+  margin-left: .5em;
+  
+  
 }
-.c-name,
+.c-name{
+  font-size: 1.05em;
+  font-weight: 700;
+  height: 30px;
+  width: 100%;
+  margin-left: .75em;
+}
+.c-img{
+  width: 150px;
+  height: 100px;
+  border-radius: 5px ;
+}
+.c-price {  /*modal*/
+  width: 20%;
+  font-size: 1.2em;
+  color: rgb(218, 218, 218);
+  text-shadow: #704b1c;
+  
+  
+}
+
 .c-total {
   font-size: 1.05em;
   font-weight: 700;
-  height: 150px;
+  height: 30px;
+  width: 100%;
+  margin-top: 10px;
 }
-.c-name,
-.c-total,
+.c-del { /*boton remuve*/
+  color: rgb(245, 238, 238);
+  background-color: #704b1c;;
+  border: none;
+  border-radius: .1em;
+  font-weight: bold;
+}
+.c-del:hover {
+  background-color: #CC4C4C;
+}
+.c-qty {/*cantidad modal*/
+  height: 34px;
+  width: 50px;
+  border-radius: 5px;
+  border: 1px solid #704b1c;
+  background-color: rgb(235, 222, 203);
+  color: #704b1c;
+  padding: 0;
+  text-align: center;
+  font-size: 1.2em;
+  margin-right: 25px;
+}
+
+/* ----------FIN DE ITEMS VERSION 1 ALV-------------- */
+
 button.c-empty,
 button.c-checkout {
   width: 100%;
 }
-.c-total,
+
 button.c-empty,
 button.c-checkout {
   margin-top: 10px;
-}
-.c-del {
-  height: 5%;
-  width: 5%;
-}
-.c-qty {
-  width: 75%;
 }
 .c-empty,
 .c-checkout {
@@ -135,7 +204,6 @@ button.c-checkout {
     grid-template-columns: 100%;
   }
 }
-
 /*estilo de las tarjetas, las dimenciones */
 
 /* :root {
@@ -159,4 +227,3 @@ button.c-checkout {
   width: 280px;
   height: 160px;
 } */
-

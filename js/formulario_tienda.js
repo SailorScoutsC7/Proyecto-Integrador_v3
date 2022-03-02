@@ -3,7 +3,7 @@ var cart = {
     hPdt: null,      // html products list
     hItems: null,    // html current cart
     items: {},       // current items in cart
-    iURL: "/html/assets/Store/regular/", // product image url folder
+    iURL: "/html/assets/Store/", // product image url folder
 
     // (B) LOCALSTORAGE CART
     // (B1) SAVE CURRENT CART INTO LOCALSTORAGE
@@ -20,7 +20,7 @@ var cart = {
 
     // (B3) EMPTY ENTIRE CART
     nuke: () => {
-        if (confirm("Empty cart?")) {
+        if (confirm("¿Estás seguro que quieres cancelar tu compra?")) {
             cart.items = {};
             localStorage.removeItem("cart");
             cart.list();
@@ -33,7 +33,6 @@ var cart = {
 
         cart.hPdt = document.getElementById("regular");
         cart.hItems = document.getElementById("cart-items");
-        console.log(cart.items)
         // (C2) DRAW PRODUCTS LIST
         cart.hPdt.innerHTML = "";
         let template = document.getElementById("template-product").content,
@@ -41,13 +40,12 @@ var cart = {
         for (let id in products) {
             p = products[id];
             item = template.cloneNode(true);
-            item.querySelector(".p-img").src = cart.iURL + p.img;
+            cart.hPdt = document.getElementById(p.tipo);
+            item.querySelector(".p-img").src = cart.iURL + p.tipo+ "/" + p.img;
             item.querySelector(".p-name").textContent = p.name;
             item.querySelector(".p-desc").textContent = p.desc;
             item.querySelector(".p-price").textContent = "$" + p.price.toFixed(2);
             item.querySelector(".p-add").onclick = () => { cart.add(id); };
-            console.log(id);
-            cart.hPdt = document.getElementById(p.tipo);
             cart.hPdt.appendChild(item);
 
         }
@@ -71,7 +69,7 @@ var cart = {
         // (D2) CART IS EMPTY
         if (empty) {
             item = document.createElement("div");
-            item.innerHTML = "Puto el que no compre nada";
+            item.innerHTML = "Tienda vacia";
             cart.hItems.appendChild(item);
         }
 
@@ -83,12 +81,16 @@ var cart = {
                 // (D3-1) PRODUCT ITEM
                 p = products[id];
                 item = template.cloneNode(true);
+                cart.hPdt = document.getElementById(p.tipo);
                 item.querySelector(".c-del").onclick = () => { cart.remove(id); };
-                item.querySelector(".c-img").src = cart.iURL + p.img;
+                item.querySelector(".c-img").src = cart.iURL + p.tipo+ "/" + p.img;
                 item.querySelector(".c-name").textContent = p.name;
+                item.querySelector(".c-price").textContent = "Price: $" + p.price.toFixed(2);
+                //item.createElement("div").className = "c"
                 item.querySelector(".c-qty").value = cart.items[id];
                 item.querySelector(".c-qty").onchange = function () { cart.change(id, this.value); };
                 cart.hItems.appendChild(item);
+                
 
                 // (D3-2) SUBTOTAL
                 subtotal = cart.items[id] * p.price;
@@ -115,6 +117,7 @@ var cart = {
         if (cart.items[id] == undefined) { cart.items[id] = 1; }
         else { cart.items[id]++; }
         cart.save(); cart.list();
+        openNav();
     },
 
     // (F) CHANGE QUANTITY

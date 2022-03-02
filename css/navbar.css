@@ -5,6 +5,7 @@
 }
 
 nav{
+  
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -23,7 +24,6 @@ nav{
   display: flex;
   justify-content: space-around;
   width: 80%;
-
 }
 
 .nav-links li{
@@ -100,9 +100,9 @@ nav{
       display: block;
   }
 
-/*   
-  nav {
-  z-index: 1 !important;
+  
+  /* .nav {
+  z-index: 0 !important;
   } */
 
   

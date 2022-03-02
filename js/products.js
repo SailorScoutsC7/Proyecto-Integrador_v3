@@ -23,7 +23,7 @@ var products = [
       name: "Pan de muerto",
       desc: "Sabrocito con de temporada",
       tipo: "temporada",
-      img: "galleta1.jpg",
+      img: "Pan_de_muerto_tradicional.png",
       price: 1247
     },
     {
@@ -51,7 +51,7 @@ var products = [
     {
       name: "prueba2",
       desc: "Javascript es lo máximo!!!",
-      img: "dummy-pdt-a.jpg",
+      img: "Pan_de_muerto_tradicional.png",
       tipo: "temporada",
       price: 842
     }
