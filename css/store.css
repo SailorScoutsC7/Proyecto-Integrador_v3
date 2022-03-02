@@ -3,33 +3,35 @@
 }
 
 
-
+/* 
 .card {
   background: rgb(209, 139, 79);
   border: 1px solid #dd2476;
   color: rgba(250, 250, 250, 0.8);
   margin-bottom: 2rem;
-}
+} */
 
-
+/*
 .btn {
   border: 5px solid;
   border-image-slice: 1;
   background: var(--gradient) !important;
   /* -webkit-background-clip: text !important; */
   /*-webkit-text-fill-color: transparent !important;*/
-  border-image-source:  var(--gradient) !important; 
+  /*border-image-source:  var(--gradient) !important; 
   text-decoration: none;
   transition: all .4s ease;
 }
+
 .btn:hover, .btn:focus {
   background: var(--gradient) !important;
 /* -webkit-background-clip: none !important; */
--webkit-text-fill-color: #fff !important;
+/*-webkit-text-fill-color: #fff !important;
 border: 5px solid #fff !important; 
 box-shadow: #222 1px 0 10px;
 text-decoration: underline;
 }
+*/
 
 
 
@@ -65,14 +67,19 @@ background-image: url(fondo1.jpg )
               text-shadow: rgb(0, 0, 0) 2px 2px 2px;   
           }
 
+          @media screen and (max-width:986px){
 
-<<<<<<< Updated upstream
-          .card {
-=======
+
+            #imgcar{
+              height: 50px;
+            }
+
+
+          }
+
+
             
-
-          /* .card {
->>>>>>> Stashed changes
+           .card {
             border: 5px solid ;
 border-radius: 40px;
 }
@@ -84,7 +91,7 @@ border: 0px solid ;
 border-radius: 35px 35px 0px 0px;
 width: 278px;
 height: 160px;
-}
+} 
 
 
 

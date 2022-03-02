@@ -1,164 +1,210 @@
- console.log("Sistema funcionando");
- //Montar el servidor (Solo usar una vez)
+var cart = {
+    // (A) PROPERTIES
+    hPdt: null,      // html products list
+    hItems: null,    // html current cart
+    items: {},       // current items in cart
+    iURL: "/html/assets/Store/", // product image url folder
 
-//   var regular=[];
-//    localStorage.setItem("regular", JSON.stringify(regular));
-//   var producto_covid=[];
-//   localStorage.setItem("producto_covid", JSON.stringify(producto_covid));
-//   var temporada=[];
-//   localStorage.setItem("temporada", JSON.stringify(temporada));
+    // (B) LOCALSTORAGE CART
+    // (B1) SAVE CURRENT CART INTO LOCALSTORAGE
+    save: () => {
+        localStorage.setItem("cart", JSON.stringify(cart.items));
+    },
 
-regular = JSON.parse(localStorage.getItem("regular"));
-temporada = JSON.parse(localStorage.getItem("temporada"));
-producto_covid = JSON.parse(localStorage.getItem("producto_covid"));
+    // (B2) LOAD CART FROM LOCALSTORAGE
+    load: () => {
+        cart.items = localStorage.getItem("cart");
+        if (cart.items == null) { cart.items = {}; }
+        else { cart.items = JSON.parse(cart.items); }
+    },
 
-class Producto {
-    constructor(ID,nombre,precio,cantidad,tipo,descripcion,img) {
-        this.ID= ID;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.cantidad= cantidad;
-        this.tipo= tipo;
-        this.descripcion= descripcion;
-        this.img= img;
-    }
-}
-function agregarProducto(formulario) {
-    var ID = document.getElementById('ID_Producto').value;
-    var nombre = document.getElementById('nombre_producto').value;
-    var precio = document.getElementById('Precio').value;
-    var cantidad = document.getElementById('cantidad').value;
-    var tipo = document.getElementById('tipo').value;
-    var descripcion = document.getElementById('Descripcion').value;
-    var img = document.getElementById('imagen').value;
-    img = img.replace(/^.*\\/, "");
-    //validarForm(nombre, email, telefono, mensaje);
-    var producto = new Producto(ID,nombre,precio,cantidad,tipo,descripcion,img);
-    console.log(tipo);
-    tipoProducto(tipo,producto);
-    ID="";
-    nombre="";
-    precio="";
-    cantidad="";
-    tipo="";
-    descripcion="";
-    img="";
-}
-//función que determina en que almacenamiento guardar cada producto.
-function tipoProducto(tipo,producto){
-   switch(tipo){
-   case "regular":
-    regular.push(producto);
-    localStorage.setItem("regular", JSON.stringify(regular));
-    break;
-   case "temporada":
-    temporada.push(producto);
-    localStorage.setItem("temporada", JSON.stringify(temporada));
-    break;
-   case "producto_covid":
-    producto_covid.push(producto);
-    localStorage.setItem("producto_covid", JSON.stringify(producto_covid));
-    break;
-   }
-}
-//función que usa los datos del LocaStorage para hacer las tarjetas del producto
-function añadirProducto(subir_producto){
-    var primerletra = subir_producto.tipo.charAt(0);
-    const itemHTML = 
-        '<div class="col-md-4">\n'                                         +
-        '<div class="card" style="width: 18rem;">\n'                        +
-        '<img src="../html/assets/Store/'+subir_producto.tipo+'/'+subir_producto.img+'" class="card-img-top" alt="'+subir_producto.nombre+'">\n'                        +
-        '    <div class="card-body">\n'                                     +
-        '        <h5 class="card-title">'+subir_producto.nombre+'</h5>\n'   +
-        '        <h6 style="color: brown; font-sixe: 50px" id="precio">'+subir_producto.precio+' MXN</h6>\n'   +
-        '        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#' + primerletra + subir_producto.ID + '" onclick="agregarModal()">Agregar</button>\n' +
-        '    </div>\n'                                                      +
-        '</div>\n'                                                          +
-        '</div>\n'                                                          +    
-         //Modal
+    // (B3) EMPTY ENTIRE CART
+    nuke: () => {
+        if (confirm("¿Estás seguro que quieres cancelar tu compra?")) {
+            cart.items = {};
+            localStorage.removeItem("cart");
+            cart.list();
+        }
+    },
 
-         '<div class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="' + primerletra + subir_producto.ID + '">\n' +
-         '<div class="modal-dialog modal modal-dialog-centered" role="document">\n' +
-         '<div class="modal-content">\n' +
-         '<div class="modal-header" style="text-align: center;">\n' +
-         '<h5 class="modal-title" id="exampleModalLongTitle" style="text-align: center;">' + subir_producto.nombre + '</h5>\n' +
-         '<button type="button" class="close" data-dismiss="modal" style="font-size=15px" aria-label="Close>\n' +
-         '<span aria-hidden="true">&times;</span>\n' +
-         '</button>\n' +
-         '</div>\n' +
-         '<div class="modal-body">\n' +
-         '<div class="container-fluid">\n' +
-         '<div class="row">\n' +
-         '<div class="col-md-4"><img src="../html/assets/Store/' + subir_producto.tipo + '/' + subir_producto.img + '" class="img-fluid"></div>\n' +
-         '<div class="col-md-8" ><p style="text-align: justify;">'+subir_producto.descripcion+'</p><p style="text-align: justify;">Precio: </p>' +'<a id="cambioPrecio" style="font-size=15px" >' + subir_producto.precio + '</a>' +' <a>pesos.</a><div class="btn-mas"><span>-</span><span class="numero" id="value">1</span><span>+</span></div></div>\n' +
-         '</div>\n' +
-         '</div>\n' +
-         '</div>\n' +
-         '<div class="modal-footer">\n' +
-         '<button type="button" class="btn btn-primary">Agregar</button>\n' +
-         '</div>\n' +
-         '</div>\n' +
-         '</div>\n' +
-         '</div>';                                                       
-    const itemsContainer = document.getElementById(subir_producto.tipo);//define en que sección poner el producto
-    itemsContainer.innerHTML += itemHTML;//añade el elemento HTML
-}
+    // (C) INITIALIZE
+    init: () => {
+        // (C1) GET HTML ELEMENTS
 
-// función que añade productos al carrusel
-function añadirProductosTempo(añadir_productoTemp){
-    const itemHTML2 = 
-        '<div class="carousel-item">\n'                                     +
-        '<img src="assets/Store/temporada/'+añadir_productoTemp.img +'" class="d-block w-100" alt="..." height="500" width="150"></img>\n'+
-         '</div>';
-    const itemsContainer2 = document.getElementById("carruselTempo");//define en que sección poner el producto
-    itemsContainer2.innerHTML += itemHTML2;//añade el elemento HTML
-}
-/*
-<div class="carousel-item">
-          <img src="assets/Store/temporada/febrero.jpg" class="d-block w-100" alt="..." height="500" width="150">
-          </div>
-*/
+        cart.hPdt = document.getElementById("regular");
+        cart.hItems = document.getElementById("cart-items");
+        // (C2) DRAW PRODUCTS LIST
+        cart.hPdt.innerHTML = "";
+        let template = document.getElementById("template-product").content,
+            p, item, part;
+        for (let id in products) {
+            p = products[id];
+            item = template.cloneNode(true);
+            cart.hPdt = document.getElementById(p.tipo);
+            item.querySelector(".p-img").src = cart.iURL + p.tipo+ "/" + p.img;
+            item.querySelector(".p-name").textContent = p.name;
+            item.querySelector(".p-desc").textContent = p.desc;
+            item.querySelector(".p-price").textContent = "$" + p.price.toFixed(2);
+            item.querySelector(".p-add").onclick = () => { cart.add(id); };
+            cart.hPdt.appendChild(item);
 
-//Código para añadir productos al HTML.
-var recorrerArray=[regular,temporada,producto_covid];
+        }
 
-for (let index = 0; index < recorrerArray.length; index++) {
-    for (let j = 0; j < recorrerArray[index].length; j++) {
-        var subir_producto = recorrerArray[index][j];
-       añadirProducto(subir_producto);
+        // (C3) LOAD CART FROM PREVIOUS SESSION
+        cart.load();
+
+        // (C4) LIST CURRENT CART ITEMS
+        cart.list();
+    },
+
+    // (D) LIST CURRENT CART ITEMS (IN HTML)
+    list: () => {
+        // (D1) RESET
+        cart.hItems.innerHTML = "";
+        let item, part, pdt, empty = true;
+        for (let key in cart.items) {
+            if (cart.items.hasOwnProperty(key)) { empty = false; break; }
+        }
+
+        // (D2) CART IS EMPTY
+        if (empty) {
+            item = document.createElement("div");
+            item.innerHTML = "Carrito vacio";
+            cart.hItems.appendChild(item);
+        }
+
+        // (D3) CART IS NOT EMPTY - LIST ITEMS
+        else {
+            let template = document.getElementById("template-cart").content,
+                p, total = 0, subtotal = 0;
+            for (let id in cart.items) {
+                // (D3-1) PRODUCT ITEM
+                p = products[id];
+                item = template.cloneNode(true);
+                cart.hPdt = document.getElementById(p.tipo);
+                item.querySelector(".c-del").onclick = () => { cart.remove(id); };
+                item.querySelector(".c-img").src = cart.iURL + p.tipo+ "/" + p.img;
+                item.querySelector(".c-name").textContent = p.name;
+                item.querySelector(".c-price").textContent = "Precio: $" + p.price.toFixed(2);
+                //item.createElement("div").className = "c"
+                item.querySelector(".c-qty").value = cart.items[id];
+                item.querySelector(".c-qty").onchange = function () { cart.change(id, this.value); };
+                console.log(item);
+                cart.hItems.appendChild(item);
+                
+
+                // (D3-2) SUBTOTAL
+                subtotal = cart.items[id] * p.price;
+                total += subtotal;
+                
+            }
+
+            // (D3-3) TOTAL AMOUNT
+            item = document.createElement("div");
+            item.className = "c-total";
+            item.id = "c-total";
+            item.innerHTML = "TOTAL: $" + total;
+            cart.hItems.appendChild(item);
+
+            // (D3-4) EMPTY & CHECKOUT
+            item = document.getElementById("template-cart-checkout").content.cloneNode(true);
+            item.querySelector(".c-checkout").onclick= function (){cart.checkout(total);};
+            cart.hItems.appendChild(item);
+        }
+    },
+
+    // (E) ADD ITEM INTO CART
+    add: (id) => {
+        if (cart.items[id] == undefined) { cart.items[id] = 1; }
+        else { cart.items[id]++; }
+        cart.save(); cart.list();
+        openNav();
+    },
+
+    // (F) CHANGE QUANTITY
+    change: (pid, qty) => {
+        // (F1) REMOVE ITEM
+        if (qty <= 0) {
+            delete cart.items[pid];
+            cart.save(); cart.list();
+        }
+
+        // (F2) UPDATE TOTAL ONLY
+        else {
+            cart.items[pid] = qty;
+            var total = 0;
+            for (let id in cart.items) {
+                total += cart.items[id] * products[id].price;
+                document.getElementById("c-total").innerHTML = "TOTAL: $" + total;
+            }
+        }
+    },
+
+    // (G) REMOVE ITEM FROM CART
+    remove: (id) => {
+        delete cart.items[id];
+        cart.save();
+        cart.list();
+    },
+
+    // (H) CHECKOUT
+    checkout: (total) => {
+        
+        item = document.createElement("div");
+            item.className = "paypal-button-container";
+            item.id = "paypal-button-container";
+            cart.hItems.appendChild(item);
+        console.log(total)
+        paypal.Buttons({
+
+            // Sets up the transaction when a payment button is clicked
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: total // Can reference variables or functions. Example: `value: document.getElementById('...').value`
+                        }
+                    }]
+                });
+            },
+            
+            // Finalize the transaction after payer approval
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (orderData) {
+                    // Successful capture! For dev/demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    var transaction = orderData.purchase_units[0].payments.captures[0];
+                    alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+            
+                    // When ready to go live, remove the alert and show a success message within this page. For example:
+                    // var element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '';
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                });
+            }
+            }).render('#paypal-button-container');   
+        // SEND DATA TO SERVER
+        // CHECKS
+        // SEND AN EMAIL
+        // RECORD TO DATABASE
+        // PAYMENT
+        // WHATEVER IS REQUIRED
+        //alert("Confirma compra");
+
+        /*
+        var data = new FormData();
+        data.append("cart", JSON.stringify(cart.items));
+        data.append("products", JSON.stringify(products));
+    
+        fetch("SERVER-SCRIPT", { method:"POST", body:data })
+        .then(res=>res.text()).then((res) => {
+          console.log(res);
+        })
+        .catch((err) => { console.error(err); });
+        */
     }
 };
+window.addEventListener("DOMContentLoaded", cart.init);
 
-
-    for (let t = 0; t < temporada.length; t++) {
-        var añadir_productoTemp = temporada[t];
-        añadirProductosTempo(añadir_productoTemp);
-    }
-    //contador del modal 
-    document.querySelectorAll(".btn-mas>span:first-child, .btn-mas>span:last-child").forEach(span => {
-        span.addEventListener("click",
-        function () {
-            var element=this.parentElement.querySelector(".numero");
-            var num=element.innerText;
-            var prueba = subir_producto.precio*(parseInt(num)+1);
-            if (this.innerText=="+") {
-                // incrementamos
-                num ++;
-                           
-            } else {
-                // decrementano
-                
-                num--;
-            }
-            element.innerText=num;  
-            document.getElementById("cambioPrecio").innerText =  prueba.toString();
-        });
-    });//document
-
-    /*
-    function CambioDePrecio(){
         
-    document.getElementById("cambioPrecio").innerText =  prueba.toString();
-    }
-
-CambioDePrecio();*/

@@ -5,6 +5,7 @@
 }
 
 nav{
+  
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -23,7 +24,6 @@ nav{
   display: flex;
   justify-content: space-around;
   width: 80%;
-
 }
 
 .nav-links li{
@@ -55,23 +55,23 @@ nav{
   transition: all 0.3s ease;
 }
 
-#carrito {
+.carrito {
   height: 30px;
   align-items: center;
   margin-top: -8px;
 }
 
-@media screen and (max-width:1324px){
+/* @media screen and (max-width:1424px){
   .nav-links{
       display: flex;
       justify-content: space-around;
-      width: 80%;
+
   }
   
-}
+} */
 
 
-@media screen and (max-width:768px){
+@media screen and (max-width:968px){
   body{
       overflow-x: hidden;
   }
@@ -99,6 +99,12 @@ nav{
   .burger{
       display: block;
   }
+
+  
+  /* .nav {
+  z-index: 0 !important;
+  } */
+
   
 }
 

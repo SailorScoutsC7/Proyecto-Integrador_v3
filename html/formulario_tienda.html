@@ -12,6 +12,14 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/logodamor.css">
 
+    <style>
+      #formulario {  
+       z-index: 0 !important;
+       }
+     </style>
+
+
+
 </head>
 
 <!-- <style>
@@ -25,10 +33,10 @@
 <body> 
 
 <br><br><br><br>
-      <form  class="formulario"> <!-- Manager's form start-->
+      <form id="formulario" class="formulario"> <!-- Manager's form start-->
     <div class="container">
 
-        <H1>Agregar Productos</H1>
+        <H1>Agregar productos</H1>
         
         <div class="row">
           <div class="col-sm">
@@ -71,7 +79,7 @@
 
                 <br><br>
                 <div class="form-group">
-                <label for="exampleFormControlTextarea1">Descripción</label>
+                <label for="exampleFormControlTextarea1">Descripción: </label>
                 <textarea class="form-control" id="Descripcion" rows="3"></textarea>
               </div>
 
