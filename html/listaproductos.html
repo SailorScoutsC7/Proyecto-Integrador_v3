@@ -22,7 +22,7 @@
       <a class="nav-link active" data-toggle="tab" href="#home">Lista de Productos</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+      <a class="nav-link" data-toggle="tab" href="#menu1">Lista Usuarios</a>
     </li>
     
   </ul>
@@ -52,8 +52,116 @@
   
     </div>
     <div id="menu1" class="container tab-pane fade"><br>
-     <!--aqui pones tu código--> <h3>Menu 1</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <h1 style="text-align: center;">Usuarios</h1>
+
+      <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal">Agregar Usuario</button>
+  <br>
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="nombre" class="col-form-label">nombre:</label>
+              <input type="text" class="form-control" id="nombre">
+            </div>
+            <div class="form-group">
+              <label for="Correo" class="col-form-label">Correo:</label>
+              <input type="text" class="form-control" id="correo">
+            </div>
+            <div class="form-group">
+              <label for="Direccion" class="col-form-label">Direccion:</label>
+              <input type="text" class="form-control" id="direccion">
+            </div>
+            <div class="form-group">
+              <label for="Telefono" class="col-form-label">Telefono:</label>
+              <input type="text" class="form-control" id="telefono">
+            </div>
+            <div class="form-group">
+              <label for="Contraseña" class="col-form-label">Contraseña:</label>
+              <input type="text" class="form-control" id="contrasena">
+            </div>
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary"onclick="crearUsuario()">Crear</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actualizar Usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="nombre" class="col-form-label">nombre:</label>
+              <input type="text" class="form-control" id="enombre">
+            </div>
+            <div class="form-group">
+              <label for="Correo" class="col-form-label">Correo:</label>
+              <input type="text" class="form-control" id="ecorreo">
+            </div>
+            <div class="form-group">
+              <label for="Direccion" class="col-form-label">Direccion:</label>
+              <input type="text" class="form-control" id="edireccion">
+            </div>
+            <div class="form-group">
+              <label for="Telefono" class="col-form-label">Telefono:</label>
+              <input type="text" class="form-control" id="etelefono">
+            </div>
+            <div class="form-group">
+              <label for="Contraseña" class="col-form-label">Contraseña:</label>
+              <input type="text" class="form-control" id="econtrasena">
+            </div>
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary"onclick="updateUsuario()">Actualizar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Direccion</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Contraseña</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="listaUsuarios">
+            
+          </tbody>
+        </table>
+  
+      <script src="../js/listaUsuarios.js"></script>
     </div>
     
   </div>
