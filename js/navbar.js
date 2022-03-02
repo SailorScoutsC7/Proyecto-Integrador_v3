@@ -8,19 +8,19 @@
 
         '<ul class="nav-links">\n' +
 
-            '<li><a href="../html/Conocenos.html"></a>Conócenos</li>\n' +
+            '<li><a href="../html/Conocenos.html">Conócenos</a></li>\n' +
 
-            '<li><a href="../html/Tienda.html"></a>Desarrolladores</li>\n' +
+            '<li><a href="../html/Desarrolladores.html">Desarrolladores</a></li>\n' +
 
-            '<li><a href="../html/Tienda.html"></a>Tienda</li>\n' +
+            '<li><a href="../html/Tienda2.html">Tienda</a></li>\n' +
 
-            '<li><a href="..https://www.faeeac.org"></a>FAEE</li>\n' +
+            '<li><a href="..https://www.faeeac.org">FAEE</a></li>\n' +
 
-            '<li><a href="../html/Contacto.html"></a>Contacto</li>\n' +
+            '<li><a href="../html/Contacto.html">Contacto</a></li>\n' +
 
-            '<li><a href="..https://www.animalgourmet.com/2018/02/26/damor-panaderia-guadalajara/"></a>Noticias</li>\n' +
+            '<li><a href="..https://www.animalgourmet.com/2018/02/26/damor-panaderia-guadalajara/">Noticias</a></li>\n' +
 
-            '<li><a href="../html/IniciarSesion.html"></a>Iniciar Sesion</li>\n' +
+            '<li><a href="../html/IniciarSesion.html">Iniciar Sesion</a></li>\n' +
 
             '<li><a href="../html/Conocenos.html"><img src="assets/carrito de compras.png" alt="" id="carrito"></a></li>\n' +
 
